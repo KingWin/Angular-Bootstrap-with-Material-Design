@@ -239,8 +239,7 @@ function getRandomColor(): number[] {
 
 /**
  * Generate colors for line|bar charts
- * @param index
- * @returns {number[]|Color}
+
  */
 function generateColor(index: number): number[] {
   return BaseChartDirective.defaultColors[index] || getRandomColor();
@@ -248,8 +247,7 @@ function generateColor(index: number): number[] {
 
 /**
  * Generate colors for pie|doughnut charts
- * @param count
- * @returns {Colors}
+
  */
 function generateColors(count: number): Array<number[]> {
   const colorsArr: Array<number[]> = new Array(count);
@@ -261,10 +259,7 @@ function generateColors(count: number): Array<number[]> {
 
 /**
  * Generate colors by chart type
- * @param chartType
- * @param index
- * @param count
- * @returns {Color}
+
  */
 function getColors(chartType: string, index: number, count: number): any {
   if (chartType === 'pie' || chartType === 'doughnut') {

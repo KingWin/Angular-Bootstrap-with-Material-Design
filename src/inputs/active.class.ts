@@ -22,19 +22,20 @@ export class ActiveDirective implements AfterViewInit, AfterViewChecked {
     this.el = el;
     this.isBrowser = isPlatformBrowser(platformId);
   }
-  @HostListener('focus', ['$event']) onClick() {
+  @HostListener('focus') onClick() {
     this.initComponent();
     this.isClicked = true;
   }
 
-  @HostListener('click', ['$event']) Click() {
+  @HostListener('click') Click() {
     this.isClicked = true;
   }
 
-  @HostListener('blur', ['$event']) onBlur() {
+  @HostListener('blur') onBlur() {
     this.checkValue();
     this.isClicked = false;
   }
+
 
 
   // ngAfterViewInit with checkValue after setTimeout is needed in situation when we have prefilled
@@ -48,7 +49,13 @@ export class ActiveDirective implements AfterViewInit, AfterViewChecked {
   ngAfterViewChecked() {
     this.initComponent();
     this.checkValue();
+
+    // tslint:disable-next-line:max-line-length
+    if (this.el.nativeElement.tagName === 'MDB-COMPLETER' && this.el.nativeElement.getAttribute('ng-reflect-model') == null && !this.isClicked) {
+      this.renderer.removeClass(this.elLabel, 'active');
+    }
   }
+
 
 
   private initComponent(): void {
@@ -75,6 +82,7 @@ export class ActiveDirective implements AfterViewInit, AfterViewChecked {
       }
     }
   }
+
   private checkValue(): void {
     let value = '';
     if (this.elLabel != null) {
@@ -84,10 +92,19 @@ export class ActiveDirective implements AfterViewInit, AfterViewChecked {
         if (this.elIcon) {
           this.renderer.removeClass(this.elIcon, 'active');
         }
-      // tslint:disable-next-line:max-line-length
-      } if (value === '' && this.isClicked || value === '' && this.el.nativeElement.placeholder || value === '' && this.el.nativeElement.attributes.placeholder) {
+        // tslint:disable-next-line:max-line-length
+      } if (value === '' && this.isClicked ||
+        value === '' && this.el.nativeElement.placeholder ||
+        value === '' && this.el.nativeElement.attributes.placeholder
+      ) {
         this.renderer.addClass(this.elLabel, 'active');
+      }
+      if (this.el.nativeElement.getAttribute('ng-reflect-model') != null) {
+        if (this.el.nativeElement.tagName === 'MDB-COMPLETER' && this.el.nativeElement.getAttribute('ng-reflect-model').length !== 0) {
+          this.renderer.addClass(this.elLabel, 'active');
+        }
       }
     }
   }
 }
+

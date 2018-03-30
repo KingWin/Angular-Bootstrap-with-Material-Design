@@ -1,7 +1,9 @@
+import { ComponentLoader } from './../utils/component-loader/component-loader.class';
+import { ComponentLoaderFactory } from './../utils/component-loader/component-loader.factory';
 import { Directive, Input, Output, EventEmitter, OnInit, OnDestroy, Renderer, ElementRef, TemplateRef,
   ViewContainerRef } from '@angular/core';
   import { PopoverConfig } from './popover.config';
-  import { ComponentLoaderFactory, ComponentLoader } from '../utils/component-loader';
+
   import { PopoverContainerComponent } from './popover-container.component';
 
 /**

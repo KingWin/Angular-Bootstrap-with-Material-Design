@@ -1,9 +1,10 @@
+
 import { Directive, ElementRef, EmbeddedViewRef, EventEmitter, HostBinding, Input, OnDestroy, OnInit, Output, Renderer,
   ViewContainerRef } from '@angular/core';
   import { Subscription } from 'rxjs/Subscription';
   import 'rxjs/add/operator/filter';
-  import { ComponentLoader, ComponentLoaderFactory } from '../utils/component-loader/index';
-
+  import { ComponentLoader } from '../utils/component-loader/component-loader.class';
+  import { ComponentLoaderFactory } from './../utils/component-loader/component-loader.factory';
   import { BsDropdownConfig } from './dropdown.config';
   import { BsDropdownContainerComponent } from './dropdown-container.component';
   import { BsDropdownState } from './dropdown.state';

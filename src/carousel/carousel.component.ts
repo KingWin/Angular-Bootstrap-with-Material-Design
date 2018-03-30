@@ -1,6 +1,7 @@
 import { Component, Input, OnDestroy, Output, EventEmitter, ElementRef, HostListener } from '@angular/core';
 
-  import { isBs3, LinkedList } from '../utils';
+  import { isBs3 } from '../utils/ng2-bootstrap-config';
+  import { LinkedList } from '../utils/linked-list.class';
   import { SlideComponent } from './slide.component';
   import { CarouselConfig } from './carousel.config';
 
@@ -277,7 +278,7 @@ export class CarouselComponent implements OnDestroy {
 
   /**
    * Rolling to specified slide
-   * @param index: {number} index of slide, which must be shown
+
    */
    public selectSlide(index: number): void {
      this.pause();
@@ -318,7 +319,7 @@ export class CarouselComponent implements OnDestroy {
 
   /**
    * Finds and returns index of currently displayed slide
-   * @returns {number}
+
    */
    public getCurrentSlideIndex(): number {
      return this._slides.findIndex((slide: SlideComponent) => slide.active);
@@ -326,8 +327,7 @@ export class CarouselComponent implements OnDestroy {
 
   /**
    * Defines, whether the specified index is last in collection
-   * @param index
-   * @returns {boolean}
+
    */
    public isLast(index: number): boolean {
      return index + 1 >= this._slides.length;
@@ -335,9 +335,7 @@ export class CarouselComponent implements OnDestroy {
 
   /**
    * Defines next slide index, depending of direction
-   * @param direction: Direction(UNKNOWN|PREV|NEXT)
-   * @param force: {boolean} if TRUE - will ignore noWrap flag, else will return undefined if next slide require wrapping
-   * @returns {any}
+
    */
    private findNextSlideIndex(direction: Direction, force: boolean): any {
      let nextSlideIndex = 0;
@@ -365,8 +363,7 @@ export class CarouselComponent implements OnDestroy {
 
   /**
    * Sets a slide, which specified through index, as active
-   * @param index
-   * @private
+
    */
    private _select(index: number): void {
      if (isNaN(index)) {

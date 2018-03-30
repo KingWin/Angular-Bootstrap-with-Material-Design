@@ -1,7 +1,7 @@
 import { ComponentRef, Injectable, TemplateRef, EventEmitter, Renderer, ViewContainerRef, ElementRef } from '@angular/core';
 
-import { ComponentLoader } from '../utils/component-loader';
-import { ComponentLoaderFactory } from '../utils/component-loader';
+import { ComponentLoader } from '../utils/component-loader/component-loader.class';
+import { ComponentLoaderFactory } from '../utils/component-loader/component-loader.factory';
 import { ModalBackdropComponent } from './modalBackdrop.component';
 import { ModalContainerComponent } from './modalContainer.component';
 import { MDBModalRef, ClassName, modalConfigDefaults, ModalOptions, TransitionDurations } from './modal.options';
